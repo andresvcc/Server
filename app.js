@@ -14,11 +14,11 @@ var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 
 var options = {
-    host: "10.194.69.15",
+    host: "cvktne7b4wbj4ks1.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     port: 3306,
-    user: "A1",
-    password: "LWtmyLtbVRdC10H6",
-    database: "A1"
+    user: "qcnhaabcxfs4vawh",
+    password: "hzy3paln8zyfakt1",
+    database: "uwim13lh799gyhlm"
 };
 
 var sessionStore = new MySQLStore(options);

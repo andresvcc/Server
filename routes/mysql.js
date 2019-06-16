@@ -16,10 +16,10 @@ var gutil = require('gulp-util');
  |           MySQL CONFIG CONNECTION             |
  ------------------------------------------------*/
 let connection = mysql.createConnection({
-    host: "10.194.69.15",
-    user: "A1",
-    password: "LWtmyLtbVRdC10H6",
-    database: "A1"
+    host: "cvktne7b4wbj4ks1.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "qcnhaabcxfs4vawh",
+    password: "hzy3paln8zyfakt1",
+    database: "uwim13lh799gyhlm"
 });
 
 connection.connect((err)=>{ 
