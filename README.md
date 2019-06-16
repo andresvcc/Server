@@ -20,7 +20,8 @@ $ npm run dev
 ```
 il sera deploye par default dans le port 4000, http://localhost:4000 :+1:
 
-# Demo
-[Demo eastShop link](https://server-eastshop.herokuapp.com).
+# API Demo
+```https://server-eastshop.herokuapp.com```
 
-
+# Demo Client
+[Demo eastShop](https://client-eastshop.herokuapp.com).
