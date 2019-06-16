@@ -24,4 +24,4 @@ il sera deploye par default dans le port 4000, http://localhost:4000 :+1:
 ```https://server-eastshop.herokuapp.com```
 
 # Demo Client
-[Demo eastShop](https://client-eastshop.herokuapp.com).
+link: [Demo eastShop](https://client-eastshop.herokuapp.com).
