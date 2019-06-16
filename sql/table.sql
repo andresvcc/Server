@@ -1,18 +1,10 @@
-/*
-show databbases; Voir toutes les bases de données dans le system
-use A1 : Selectionner la base de donnée
-show tables; // voir les tables
-drop table (nom table) // enlever une table
-drop database (nom database) //enlever une BDD
-*/
+/*******************************************************
+Ce sont des enquêtes pour creer les tables de la base de données du "Projet transversal".
+*******************************************************/
 
-/**Initialiser la base de donnée*/
-
-use A1;
-DROP DATABASE A1;
-CREATE DATABASE A1;
-use A1;
-
+/*******************************************************
+ Andres Vicente Caballero Cantillo et  Alexis Erne
+*******************************************************/
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (

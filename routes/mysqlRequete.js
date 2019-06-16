@@ -76,13 +76,13 @@ module.exports = Object.freeze({
      },
 
 /*13.2*/ FIND_USER: (surname, password) => {
-          return `SELECT surname, 1 as typeuser
+     return `       SELECT surname, 1 as typeuser
                     FROM users, vendeurs 
                     WHERE users.surname = '${surname}'
                     AND users.id_user = vendeurs.id_user
                     AND users.password = '${password}'
                UNION
-               SELECT surname, 2 as typeuser
+                    SELECT surname, 2 as typeuser
                     FROM users, acheteurs 
                     WHERE users.surname = '${surname}'
                     AND users.id_user = acheteurs.id_user
@@ -115,14 +115,6 @@ module.exports = Object.freeze({
                     AND restaurants.nom = "${restaurant}";` 
      },
 
-/*21*/ FIND_PRODUIT_QUARTIER: (nomProduit, username, password) => { 
-            return `query` 
-     },
-
-/*22*/ CATEGORIE_ACHETEUR: (surname, password) => { 
-            return `query` 
-     },
-
 /*23*/ RECOMMANDATION: (nom) => { 
             return `SELECT produits.nom, produits.description, produits.photoName, restaurants.nom as restaurants, COUNT(1) AS quantite
                     FROM produits_achete, produits, restaurants
@@ -139,22 +131,6 @@ module.exports = Object.freeze({
                     GROUP BY produits.nom, produits.description, produits.photoName, restaurants.nom
                     HAVING COUNT(1) > 1
                     ORDER BY quantite DESC LIMIT 1` 
-     },
-
-/*24*/ TOP5_PRODUIT_CATEGORIE: (categorie) => { 
-            return `query` 
-     },
-
-/*25*/ TOP_PRODUIT_RESTAURANT: (restaurant) => { 
-            return `query` 
-     },
-
-/*26*/ RESTAURANT_QUARTIER: (quartier) => { 
-            return `query` 
-     },
-
-/*27*/ TOP5_PRODUITS_PLUS_ACHETE: (quartier) => { 
-            return `query` 
      },
      
 /*29.04*/ PANIER_QUANTITE_PRODUIT:(produit, restaurant)=>{
@@ -366,10 +342,6 @@ PRODUITS_ACHATS_LIST: (surname, password, idAchat) => {
                     and users.password = '${password}'` 
      },
 
-/*34*/ EVALUER_PRODUIT: (surname, password, produit) => { 
-            return `query` 
-     },
-
 /*35*/ NEW_RESTAURANT: (surname, password, nom, description, photoName, adresse, quartier, telephone) => { 
             return `INSERT INTO restaurants (id_user, nom, description, adresse, telephone, quartier, photoName)
                     VALUES (
@@ -415,10 +387,6 @@ PRODUITS_ACHATS_LIST: (surname, password, idAchat) => {
                          );` 
      },
 
-/*38*/ EDIT_RESTAURANT: (restaurant, surname, password, nom, description, photoName, adresse, quartier, telephone) => { 
-            return `query` 
-     },
-
 /*40*/ DEL_RESTAURANT: (surname, password, nom) => { 
             return `DELETE FROM restaurants 
             WHERE restaurants.nom = "${nom}"
@@ -451,22 +419,6 @@ PRODUITS_ACHATS_LIST: (surname, password, idAchat) => {
                     WHERE restaurants.id_user = vendeurs.id_user
                     AND vendeurs.id_user = users.id_user
                     AND users.surname = '${surname}' AND users.password = '${password}'` 
-     },
-
-/*44*/ EVALUATION_VENDEUR: (surname, password) => { 
-            return `query` 
-     },
-
-/*45*/ EVAL_RESTAURANT: (surname, password, restaurant) => { 
-            return `query` 
-     },
-
-/*46*/ LIST_VENTES: (surname, password) => { 
-            return `query` 
-     },
-
-/*47*/ LIST_VENTES_RESTAURANT: (surname, password, restaurant) => { 
-            return `query` 
      }
 });
 

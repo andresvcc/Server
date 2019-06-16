@@ -11,7 +11,8 @@ pour le cours "Projet transversal".
 DEMARRER NOUVELLEL SESION DANS LE SERVEUR
 chaque fois que le serveur se met en route, il est 
 nécessaire de créer une nouvelle session d'utilisation 
-sur le serveur*/
+sur le serveur, ceci se fait automatiquement
+SVP ne pas toucher la table session*/
 /*******************************************************/
 
 /*voir la liste des s_server*/

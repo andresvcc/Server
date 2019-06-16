@@ -326,64 +326,10 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 21 chercher un Produit dans mon quartier
-        FIND_PRODUIT_QUARTIER(nomProduit, surname) */
-    app.post('/findProduit', (req, res) => {
-        let sqlQuery = constants.FIND_PRODUIT_QUARTIER(req.body.nomProduit, req.body.surname)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 22 dernières categorie acheté
-        CATEGORIE_ACHETEUR(surname) */
-    app.post('/categorieAcheteur', (req, res) => {
-        let sqlQuery = constants.CATEGORIE_ACHETEUR(req.body.surname)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
     /* fn 23 produit recommandé apartire d'une autre produit, ( La plupart des acheteurs qui ont acheté X ont aussi acheté Y )
     RECOMMANDATION(surname) */
     app.post('/recommandation', (req, res) => {
         let sqlQuery = constants.RECOMMANDATION(req.body.nom)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 24 liste des 5 meilleures produits d'une categorie [évaluation/prix]
-        TOP5_PRODUIT_CATEGORIE(categorie) */
-    app.post('/top5ProduitCategorie', (req, res) => {
-        let sqlQuery = constants.TOP5_PRODUIT_CATEGORIE(req.body.categorie)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 25 le meilleur produits d'un restaurant [évaluation/prix]
-        TOP_PRODUIT_RESTAURANT(restaurant) */
-    app.post('/topProduitRestaurant', (req, res) => {
-        let sqlQuery = constants.TOP_PRODUIT_RESTAURANT(req.body.restaurant)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 26 liste des restaurant dans un quartier
-        RESTAURANT_QUARTIER(quartier) */
-    app.post('/restaurantQuartier', (req, res) => {
-        let sqlQuery = constants.RESTAURANT_QUARTIER(req.body.quartier)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 27 liste des 5 produits plus acheté dans un quartier
-        TOP5_PRODUITS_PLUS_ACHETE(quartier) */
-    app.post('/top5ProduitsPlusAchete', (req, res) => {
-        let sqlQuery = constants.TOP5_PRODUITS_PLUS_ACHETE(req.body.quartier)
         connection.query(sqlQuery, (err, resultat) => {
             err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
         })
@@ -521,15 +467,6 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 34 évaluer un produits acheté
-        EVALUER_PRODUIT(surname, password, produit) */
-    app.post('/evaluerProduit', (req, res) => {
-        let sqlQuery = constants.EVALUER_PRODUIT(req.body.surname, req.body.password, req.body.produit)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
     /*---------------------
     |       VENDEUR       |
     ---------------------*/
@@ -579,16 +516,6 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 38 éditer un restaurant
-        EDIT_RESTAURANT(restaurant, surname, password, nom, description, photoName, adresse, quartier, telephone) */
-    app.post('/editRestaurant', (req, res) => {
-        let sqlQuery = constants.EDIT_RESTAURANT(req.body.restaurant, req.body.surname, req.body.password, req.body.nom, req.body.description, 
-                                                 req.body.photoName, req.body.adresse, req.body.quartier, req.body.telephone)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
     /* fn 40 éliminer un restaurant
         DEL_RESTAURANT(restaurant, surname, password, nom, description, photoName, adresse, quartier, telephone) */
     app.post('/delRestaurant', (req, res) => {
@@ -627,42 +554,6 @@ const routerMysql = (app, sessionStore)=>{
             connection.query(sqlQuery, (err, resultat) => {
                 err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
             })
-        })
-    })
-
-    /* fn 44 voir moyenne des évaluations des produits
-        EVALUATION_VENDEUR(surname, password) */
-    app.post('/evaluationVendeur', (req, res) => {
-        let sqlQuery = constants.EVALUATION_VENDEUR(req.body.surname, req.body.password)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 45 voir moyenne évaluation des produits d'un restaurant
-        EVAL_RESTAURANT(surname, password, restaurant) */
-    app.post('/evalRestaurant', (req, res) => {
-        let sqlQuery = constants.EVAL_RESTAURANT(req.body.surname, req.body.password, req.body.restaurant)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 46 liste des produits vendu
-        LIST_VENTES(surname, password) */
-    app.post('/listVentes', (req, res) => {
-        let sqlQuery = constants.LIST_VENTES(req.body.surname, req.body.password)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })   
-
-    /* fn 47 liste des produits vendu dans un restaurant
-        LIST_VENTES_RESTAURANT(surname, password, restaurant) */
-    app.post('/listVentesRestaurant', (req, res) => {
-        let sqlQuery = constants.LIST_VENTES_RESTAURANT(req.body.surname, req.body.password, req.body.restaurant)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
         })
     })
 }
