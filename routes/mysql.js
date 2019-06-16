@@ -156,26 +156,8 @@ const routerMysql = (app, sessionStore)=>{
     /*---------------------
     |        SI           |
     ---------------------*/
-        
-    /* fn 1	 iste des session du serveur
-        LIST_SESSIONS */
-    app.post('/listSessions', (req, res) => {
-        let sqlQuery = constants.LIST_SESSIONS
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
 
-    /* fn 2	 a session curent
-        CURRENT_SESSION */
-    app.post('/currentSession', (req, res) => {
-        let sqlQuery = constants.CURRENT_SESSION 
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
-    /* fn 3	 iste des utilisateurs
+    /* fn 3	 Liste des utilisateurs
         LIST_USERS */
     app.post('/listUsers', (req, res) => {
         let sqlQuery = constants.LIST_USERS
@@ -184,7 +166,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 4	 iste des acheteurs
+    /* fn 4	 Liste des acheteurs
         LIST_ACHETEURS */
     app.post('/listAcheteurs', (req, res) => {
         let sqlQuery = constants.LIST_ACHETEURS
@@ -193,7 +175,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 5	 iste des vendeurs
+    /* fn 5	 Liste des vendeurs
         LIST_VENDEURS */
     app.post('/listVendeurs', (req, res) => {
         let sqlQuery = constants.LIST_VENDEURS
@@ -202,7 +184,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 6	 iste des recommandations
+    /* fn 6	 Liste des recommandations
         LIST_RECOMMANDATION */
     app.post('/listUserOn', (req, res) => {
         let sqlQuery = constants.LIST_RECOMMANDATION
@@ -211,7 +193,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 7	 iste des restaurants
+    /* fn 7	 Liste des restaurants
         LIST_RESTAURANTS */
     app.post('/listRestaurants', (req, res) => {
         let sqlQuery = constants.LIST_RESTAURANTS
@@ -220,7 +202,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 8	 iste des catégories
+    /* fn 8	 Liste des catégories
         LIST_CATEGORIES */
     app.post('/listCategories', (req, res) => {
         let sqlQuery = constants.LIST_CATEGORIES
@@ -229,7 +211,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 9	 iste des plats
+    /* fn 9	 Liste des plats
         LIST_PLATS */
     app.post('/listProduits', (req, res) => {
         let sqlQuery = constants.LIST_PRODUITS
@@ -317,7 +299,7 @@ const routerMysql = (app, sessionStore)=>{
     |      ACHETEUR      |
     ---------------------*/
     
-    /* fn 20 liste de Produit dans un restaurant
+    /* fn 20 lListe de Produit dans un restaurant
         LIST_PRODUIT_RESTAURANT(restaurant) */
     app.post('/listProduitRestaurant', (req, res) => {
         let sqlQuery = constants.LIST_PRODUIT_RESTAURANT(req.body.restaurant)
@@ -367,7 +349,8 @@ const routerMysql = (app, sessionStore)=>{
             })
         })
     })
-
+    
+    /* fr 29.1 liste des produits dans le pannier*/
     app.post('/listPanier', (req, res) => {
         userSession(req, res, (session)=>{
             let sqlQuery = constants.PANIER_LIST(session.surname, session.password)
@@ -456,7 +439,7 @@ const routerMysql = (app, sessionStore)=>{
         })
     }) 
     
-    /* fn 33 liste des achat déjà effectues
+    /* fn 33 lListe des achat déjà effectues
     ACHATS_LIST(surname, password) */
     app.post('/numAchatList', (req, res) => {
         userSession(req, res, (session)=>{
@@ -505,7 +488,8 @@ const routerMysql = (app, sessionStore)=>{
     app.post('/newProduit', (req, res) => {
         userSession(req, res, (session)=>{
             let sqlQuery = constants.NEW_PRODUIT(session.surname, session.password, req.body.nom, req.body.description, 
-                                                 req.body.photoName, req.body.categorie, req.body.restaurant, req.body.bio, req.body.prixBase)  
+                                                req.body.photoName, req.body.categorie, req.body.restaurant, req.body.bio,
+                                                req.body.prixBase)  
 
             connection.query(sqlQuery, (err, resultat) => {
                 err ? res.json({ ok: false, error: err }) : (
