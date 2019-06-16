@@ -21,7 +21,7 @@ $ npm run dev
 il sera deploye par default dans le port 4000, http://localhost:4000 :+1:
 
 # API Demo
-afin de tester l'API avec postman on vous laise l'adress URL et une petite lise non exaustive avec 3 requetes pour consulter certain donnes de la base des données afin de verifier que le systeme est correctement deployé
+afin de tester l'API avec postman on vous laise l'adress URL et une petite lise non exaustive avec 3 requetes pour consulter certain donnes de la base des données afin de verifier que le systeme est correctement deployé sur 
 ```https://server-eastshop.herokuapp.com```
 
 1. liste des restaurants: ```/listRestaurants```
