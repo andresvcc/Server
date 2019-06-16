@@ -1,5 +1,5 @@
 /*******************************************************
-Ce sont les enquêtes sur la base de données réalisées 
+Ce sont des enquêtes d'exemple sur la base de données SQL réalisées 
 pour le cours "Projet transversal".
 *******************************************************/
 
@@ -12,11 +12,8 @@ DEMARRER NOUVELLEL SESION DANS LE SERVEUR
 chaque fois que le serveur se met en route, il est 
 nécessaire de créer une nouvelle session d'utilisation 
 sur le serveur*/
-use a1;
-INSERT INTO s_server ()
-VALUES();
-
 /*******************************************************/
+
 /*voir la liste des s_server*/
 SELECT * FROM s_server;
 
@@ -145,7 +142,6 @@ INSERT INTO log (id_user, id_session, action)
 SELECT  (SELECT id_user FROM users WHERE surname = 'pikachu'),
         (SELECT MAX( id_session ) FROM s_server ),
         'LOGOUT';
-
 /*******************************************************/
 
 
@@ -297,7 +293,7 @@ WHERE users.id_user = vendeurs.id_user;
 
 
 
-
+/*recherche d'un utilisateur pour savoir son typeuser */
 SELECT surname, 1 as typeuser
     FROM users, vendeurs 
     WHERE users.surname = 'andres'
@@ -309,79 +305,6 @@ SELECT surname, 2 as typeuser
     WHERE users.surname = 'andres'
     AND users.id_user = acheteurs.id_user
     AND users.password = '1234';
-
-
-SELECT * 
-FROM produits_panier, restaurants, produits 
-WHERE produits_panier.id_user = (
-                    SELECT acheteurs.id_user 
-                    FROM acheteurs, users 
-                    WHERE users.surname = 'jeisy' 
-                    AND users.password = 'pass'
-                    AND acheteurs.id_user = users.id_user
-                )
-AND produits_panier.id_produit = produits.id_produit
-AND produits.id_restaurant = restaurants.id_restaurant 
-
-
-SELECT id_produit 
-FROM produits_panier 
-WHERE produits_panier.id_produit = (
-                             SELECT produits.id_produit
-                             FROM produits
-                             WHERE produits.nom = 'menu Burger'
-                             AND produits.id_restaurant = (
-                                 SELECT restaurants.id_restaurant
-                                 FROM restaurants
-                                 WHERE restaurants.nom = 'kfc'
-                             )
-                         )
-
-
-INSERT INTO produits_panier (id_user, id_produit, info, quantite)
-                    VALUES (
-                        (
-                            SELECT acheteurs.id_user 
-                            FROM acheteurs, users 
-                            WHERE users.surname = 'luz' 
-                            AND users.password = 'pass'
-                            AND acheteurs.id_user = users.id_user
-                         ),
-                         (
-                             SELECT produits.id_produit
-                             FROM produits
-                             WHERE produits.nom = 'pollo'
-                             AND produits.id_restaurant = (
-                                 SELECT restaurants.id_restaurant
-                                 FROM restaurants
-                                 WHERE restaurants.nom = 'kfc'
-                             )
-                         ),
-                         'information',
-                         1
-                    );
-
-
-UPDATE produits_panier
-                    SET quantite = 3
-                    WHERE produits_panier.id_user = (
-                              SELECT acheteurs.id_user 
-                              FROM acheteurs, users 
-                              WHERE users.surname = 'jeisy' 
-                              AND users.password = 'pass'
-                              AND acheteurs.id_user = users.id_user
-                         )
-                    AND produits_panier.id_produit = (
-                         SELECT produits.id_produit
-                         FROM produits
-                         WHERE produits.nom = 'choco'
-                         AND produits.id_restaurant = (
-                              SELECT restaurants.id_restaurant
-                              FROM restaurants
-                              WHERE restaurants.nom = 'kfc'
-                         )
-                    );
-
 
 /*consulter le panier d'un utilisateur*/
 SELECT * 
@@ -402,8 +325,6 @@ WHERE produits_panier.id_user =  (SELECT users.id_user
                                 FROM users 
                                 WHERE users.surname = 'jeisy'
                                 AND users.password = 'pass');
-
-
 
 select * from achats
 
@@ -437,8 +358,6 @@ VALUES (
     3,
     10
 );
-
-
 
 
 SELECT achats.id_achat, id_produit, prix_final as total, quantite, payment, evaluation
