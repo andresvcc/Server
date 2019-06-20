@@ -184,15 +184,6 @@ const routerMysql = (app, sessionStore)=>{
         })
     })
 
-    /* fn 6	 Liste des recommandations
-        LIST_RECOMMANDATION */
-    app.post('/listUserOn', (req, res) => {
-        let sqlQuery = constants.LIST_RECOMMANDATION
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    })
-
     /* fn 7	 Liste des restaurants
         LIST_RESTAURANTS */
     app.post('/listRestaurants', (req, res) => {
@@ -223,15 +214,6 @@ const routerMysql = (app, sessionStore)=>{
     /*---------------------
     |       USER         |
     ---------------------*/
-
-    /* fn 10 add un nouveau user
-        NEW_USER(surname, password, email) */
-    app.post('/newUser', (req, res) => {
-        let sqlQuery = constants.NEW_USER(req.body.surname, req.body.password, req.body.email)
-        connection.query(sqlQuery, (err, resultat) => {
-            err ? res.json({ ok: false, error: err }) : res.json({ ok: true, response: resultat })
-        })
-    });
 
     /* fn 11 add un nouveau acheteur
         NEW_ACHETEUR(surname, password, quartier) */

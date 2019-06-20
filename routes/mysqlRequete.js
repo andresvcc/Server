@@ -27,8 +27,6 @@ module.exports = Object.freeze({
                       FROM users, vendeurs
                       WHERE users.id_user = vendeurs.id_user`,
 
-/*6*/ LIST_RECOMMANDATION: `SELECT * FROM recommandations`,
-
 /*7*/ LIST_RESTAURANTS: `SELECT * FROM restaurants`,
 
 /*8*/ LIST_CATEGORIES: `SELECT id_categorie as id, nom as name FROM categories ORDER BY id`,
@@ -45,13 +43,6 @@ module.exports = Object.freeze({
                      FROM restaurants, categories, produits
                      WHERE produits.id_restaurant = restaurants.id_restaurant
                      AND produits.id_categorie = categories.id_categorie;`,
-
-/*10*/ NEW_USER: (surname, password, email) => { 
-            return `INSERT IGNORE INTO users
-                         SET surname = '${surname}',
-                         password = '${password}',
-                         email = "${email}";`
-     },
 
 /*11*/ NEW_ACHETEUR: (surname, password, quartier) => { 
             return `INSERT INTO acheteurs (id_user, quartier)
