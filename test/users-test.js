@@ -47,7 +47,7 @@ describe(`#Test-Asynchronous sur l'API eastSHOP` , () => {
                             });
                 }else{
                     done({err: res.body.resultat})
-                    console.log(`Test échoué login : ${res.body.resultat}`)
+                    //console.log(`Test échoué login : ${res.body.resultat}`)
                 }
             })
             .catch(err => {
