@@ -12,8 +12,8 @@ var path = require('path');
 var logger = require('morgan');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
-var AirbrakeClient = require('airbrake-js');
-var airbrakeExpress = require('airbrake-js/dist/instrumentation/express')
+//var AirbrakeClient = require('airbrake-js');
+//var airbrakeExpress = require('airbrake-js/dist/instrumentation/express')
 
 var options = {
     host: "cvktne7b4wbj4ks1.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -37,7 +37,7 @@ var airbrake = new AirbrakeClient({
   });
 
 // ceci est un middleware utilisé pour airbrake (evaluation du qualité du code et des errors).
-app.use(airbrakeExpress.makeMiddleware(airbrake))
+//app.use(airbrakeExpress.makeMiddleware(airbrake))
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -55,13 +55,17 @@ app.use(session({
     cookie  : { expires : new Date(Date.now() + (60 * 1000 * 60)) }
 }));
 
+/*
 app.use(express.static(path.join(__dirname, 'build')));
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+*/
+
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
 
-app.use(airbrakeExpress.makeErrorHandler(airbrake))  
+//app.use(airbrakeExpress.makeErrorHandler(airbrake))  
 module.exports = app;
