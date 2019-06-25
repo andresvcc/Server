@@ -28,23 +28,7 @@ describe(`#Test-Asynchronous sur l'API eastSHOP` , () => {
             .then(res => {
                 if(res.body.ok){
                     console.log(`Login ok sessID: ${res.body.sessID}, status code: ${res.statusCode}`)
-                    chai.request(server)
-                    .post('/userLogout')
-                            .send({
-                                id:res.body.sessID
-                            })
-                            .then(res => {
-                                if(res.body.ok){
-                                    console.log(`Logout ok`)
-                                    done()
-                                }else{
-                                    done({err: res.body.resultat})
-                                    console.log(`Test échoué logout: ${res.body.resultat}`)
-                                }
-                            })
-                            .catch(err => {
-                                done(err);
-                            });
+                    done()
                 }else{
                     done({err: res.body.resultat})
                     //console.log(`Test échoué login : ${res.body.resultat}`)
