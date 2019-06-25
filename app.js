@@ -31,10 +31,12 @@ const bd = require('./routes/mysql')
 var app = express();
 var cors = require('cors');
 
+/*
 var airbrake = new AirbrakeClient({
     projectId: 232890,
     projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
   });
+*/
 
 // ceci est un middleware utilisé pour airbrake (evaluation du qualité du code et des errors).
 //app.use(airbrakeExpress.makeMiddleware(airbrake))
