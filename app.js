@@ -13,6 +13,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 var AirbrakeClient = require('airbrake-js');
+var airbrakeExpress = require('airbrake-js/dist/instrumentation/express')
 
 var options = {
     host: "cvktne7b4wbj4ks1.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -29,6 +30,14 @@ const bd = require('./routes/mysql')
 
 var app = express();
 var cors = require('cors');
+
+var airbrake = new AirbrakeClient({
+    projectId: 232890,
+    projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
+  });
+
+// This middleware should be used before any routes are defined.
+app.use(airbrakeExpress.makeMiddleware(airbrake))
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -51,10 +60,9 @@ app.use(session({
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
 
-var airbrake = new AirbrakeClient({
-    projectId: 232890,
-    projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
-  });
+
   
-  
+// Error handler middleware should be the last one.
+// See http://expressjs.com/en/guide/error-handling.html
+app.use(airbrakeExpress.makeErrorHandler(airbrake))  
 module.exports = app;
