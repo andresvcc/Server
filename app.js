@@ -51,7 +51,7 @@ app.use(session({
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
 
-var airbrake = new airbrakeJs.Client({
+var airbrake = new AirbrakeClient({
     projectId: 232890,
     projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
   });
