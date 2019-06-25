@@ -36,7 +36,7 @@ var airbrake = new AirbrakeClient({
     projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
   });
 
-// This middleware should be used before any routes are defined.
+// ceci est un middleware utilisé pour airbrake (evaluation du qualité du code et des errors).
 app.use(airbrakeExpress.makeMiddleware(airbrake))
 
 app.use(logger('dev'));
@@ -63,9 +63,5 @@ app.get('/', function(req, res) {
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
 
-
-  
-// Error handler middleware should be the last one.
-// See http://expressjs.com/en/guide/error-handling.html
 app.use(airbrakeExpress.makeErrorHandler(airbrake))  
 module.exports = app;
