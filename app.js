@@ -55,7 +55,10 @@ app.use(session({
     cookie  : { expires : new Date(Date.now() + (60 * 1000 * 60)) }
 }));
 
-
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
