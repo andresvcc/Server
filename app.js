@@ -12,6 +12,7 @@ var path = require('path');
 var logger = require('morgan');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
+var AirbrakeClient = require('airbrake-js');
 
 var options = {
     host: "cvktne7b4wbj4ks1.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -50,4 +51,10 @@ app.use(session({
 router.api(app, sessionStore) //envoie app vers routage de api
 bd.routerMysql(app, sessionStore ) //envoie app vers routage de mysql
 
+var airbrake = new airbrakeJs.Client({
+    projectId: 232890,
+    projectKey: 'a57cef3b28d78aa8e4df6e0217f4accb'
+  });
+  
+  
 module.exports = app;
