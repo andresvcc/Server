@@ -26,6 +26,12 @@ afin de tester l'API avec postman on vous laise l'adress URL et une petite docum
  URL: ```https://server-eastshop.herokuapp.com```
  
  Documentation: link: [Api description link](https://drive.google.com/file/d/1OVJaDsjWgcIEg3MkYlF3nBkQ3u0dLQOM/view?usp=sharing).
- 
-# Demo Client
+
+# Client
+client: [code GitHub](https://github.com/andresvcc/Client).
+
+# Demo
 link: [Demo eastShop](https://server-eastshop.herokuapp.com).
+
+
+
