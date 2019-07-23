@@ -16,7 +16,7 @@ var gutil = require('gulp-util');
  |           MySQL CONFIG CONNECTION             |
  ------------------------------------------------*/
 let connection = mysql.createConnection({
-    host: "37.120.187.69",
+    host: "localhost",
     port: 3306,
     user: "andres",
     password: "Hipermaga66*",
