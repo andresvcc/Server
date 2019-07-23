@@ -44,9 +44,9 @@ var airbrake = new AirbrakeClient({
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(cors())
-app.use('/Photo', express.static('public/images'));  
+app.use('/Photo', express.static('static'));  
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     key: 'session_cookie_name',
@@ -61,7 +61,7 @@ app.use(session({
 //app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'static', 'index.html'));
 });
 
 router.api(app, sessionStore) //envoie app vers routage de api
