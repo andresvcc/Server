@@ -5,6 +5,12 @@ Ce sont des enquêtes pour creer les tables de la base de données du "Projet tr
 /*******************************************************
  Andres Vicente Caballero Cantillo et  Alexis Erne
 *******************************************************/
+use easty
+drop database easty
+CREATE DATABASE easty
+use easty
+
+
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
