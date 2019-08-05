@@ -16,11 +16,11 @@ var MySQLStore = require('express-mysql-session')(session);
 //var airbrakeExpress = require('airbrake-js/dist/instrumentation/express')
 
 var options = {
-    host: "localhost",
+    host: "37.120.187.69",
     port: 3306,
     user: "andres",
     password: "Hipermaga66*",
-    database: "easty"
+    database: "ademag"
 };
 
 var sessionStore = new MySQLStore(options);
